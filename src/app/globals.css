@@ -1,26 +1,129 @@
 @import "tailwindcss";
+@import "@fontsource/roboto-slab/400.css";
+@import "@fontsource/roboto-slab/500.css";
+@import "@fontsource/public-sans/400.css";
+@import "@fontsource/public-sans/500.css";
+@import "@fontsource/public-sans/600.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-paper: #efe6d3;
+  --color-paper-deep: #e4d7ba;
+  --color-ink: #211e1a;
+  --color-graphite: #2b2925;
+  --color-graphite-deep: #1c1a17;
+  --color-tan: #c9a873;
+  --color-tan-deep: #a9814e;
+  --color-sky: #8b93a6;
+  --color-sky-deep: #6c7488;
+  --color-pine: #e8d2ab;
+  --color-pine-deep: #d3ab72;
+
+  --font-display: "Roboto Slab", ui-serif, Georgia, "Times New Roman", serif;
+  --font-body: "Public Sans", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Universal two-ring focus indicator: a light inner ring and a dark outer
+   ring, so at least one boundary clears 3:1 non-text contrast against any
+   of the site's five surface colors (paper, tan, sky, graphite, pine). */
+:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--color-paper),
+    0 0 0 5px var(--color-ink);
+  border-radius: 2px;
+}
+
+.on-graphite:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--color-graphite),
+    0 0 0 5px var(--color-paper);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 100;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.no-scrollbar-x {
+  overflow-x: hidden;
+}
+
+/* Span Rail: native <details>/<summary> disclosure marks. */
+summary.rail-tick {
+  list-style: none;
+}
+summary.rail-tick::-webkit-details-marker {
+  display: none;
+}
+summary.rail-tick::marker {
+  content: "";
+}
+.rail-tick-label {
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.15s ease;
+}
+.rail-tick:hover .rail-tick-label,
+.rail-tick:focus-visible .rail-tick-label,
+details[open] > .rail-tick .rail-tick-label {
+  text-decoration-color: var(--color-tan-deep);
+}
+@media (min-width: 768px) {
+  .rail-grid {
+    grid-template-columns: repeat(var(--rail-cols, 8), minmax(0, 1fr));
+  }
+}
+@keyframes rail-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+details[open] > .rail-panel {
+  animation: rail-fade 0.18s ease;
 }
