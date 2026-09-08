@@ -56,7 +56,18 @@ export default function Footer() {
               <br />
               {business.addressLine2}
             </p>
-            <p className="text-sm text-ink/80">Kevin Jones Carpentry is also on Facebook.</p>
+            <p className="text-sm text-ink/80">
+              Kevin Jones Carpentry is also on{" "}
+              <a
+                href={business.facebookUrl}
+                target="_blank"
+                rel="noopener"
+                className="underline"
+              >
+                Facebook
+              </a>
+              .
+            </p>
           </div>
         </div>
 

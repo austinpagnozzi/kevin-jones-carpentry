@@ -27,7 +27,16 @@ export default function ContactSheet() {
               </EmailLink>
 
               <p className="text-sm text-ink/80">
-                Kevin Jones Carpentry is also on Facebook.
+                Kevin Jones Carpentry is also on{" "}
+                <a
+                  href={business.facebookUrl}
+                  target="_blank"
+                  rel="noopener"
+                  className="underline"
+                >
+                  Facebook
+                </a>
+                .
               </p>
 
               <div className="mt-2 border-t border-ink/15 pt-4 text-ink/85">

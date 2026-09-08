@@ -13,6 +13,7 @@ export const business = {
   addressLine1: "106 North Dexter Road",
   addressLine2: "Parkman, ME 04443",
   locationShort: "Parkman, Maine",
+  facebookUrl: "https://www.facebook.com/people/Kevin-Jones-Carpentry/61552366566715/",
 } as const;
 
 export const ownWords = {
