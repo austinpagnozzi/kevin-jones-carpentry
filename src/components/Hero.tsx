@@ -17,9 +17,9 @@ export default function Hero() {
     <div className="hero-shell relative bg-paper">
       <div className="hero-grid">
         <section aria-label="Introduction" className="hero-text order-1 md:order-none">
-          <div className="hero-text-inner flex max-w-xl flex-col gap-8 py-10 pr-5 sm:pr-8 md:py-14 lg:py-16">
+          <div className="hero-text-inner flex flex-col gap-8 py-10 pr-5 sm:pr-8 md:py-14 lg:py-16">
             <div>
-              <h1 className="max-w-md text-balance font-display text-[2.125rem] leading-[1.1] text-graphite sm:text-4xl md:text-[2.75rem] md:leading-[1.08] lg:text-[3.5rem] lg:leading-[1.05]">
+              <h1 className="text-balance font-display text-[2.125rem] leading-[1.1] text-graphite sm:text-4xl md:text-[2.75rem] md:leading-[1.08] lg:text-[3.5rem] lg:leading-[1.05]">
                 {heroCopy.headline}
               </h1>
               <p className="mt-6 max-w-sm font-body text-base text-muted-on-paper md:text-lg lg:text-[1.1875rem]">
@@ -51,8 +51,14 @@ export default function Hero() {
               </span>
               <strong className="font-semibold">{ownWordsFacts[0].label}</strong>
             </span>
-            <span className="mr-1">&amp;</span>
-            <strong className="mr-1 font-semibold">{ownWordsFacts[1].label}</strong>
+            {/* Same unbreakable-unit treatment as the pipe above: bind the
+                ampersand to the phrase after it so a wrap can only happen
+                before "& Word", never between the ampersand and the word
+                (KJC2-05). */}
+            <span className="mr-1 whitespace-nowrap">
+              <span className="mr-1">&amp;</span>
+              <strong className="font-semibold">{ownWordsFacts[1].label}</strong>
+            </span>
             <span className="text-[0.9375rem] text-muted-on-graphite">
               ({ownWordsFacts[0].attribution})
             </span>

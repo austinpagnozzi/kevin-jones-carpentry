@@ -21,9 +21,10 @@ export default function ContactSheet() {
 
               <EmailLink
                 subject="Project inquiry"
-                className="inline-flex w-fit items-center gap-2 rounded border border-ink/30 px-5 py-2.5 font-body font-medium hover:bg-ink/5"
+                className="inline-flex w-full max-w-full items-center gap-2 rounded border border-ink/30 px-5 py-2.5 font-body font-medium hover:bg-ink/5 sm:w-fit"
               >
-                <MailIcon /> {business.email}
+                <MailIcon />{" "}
+                <span className="break-all">{business.email}</span>
               </EmailLink>
 
               <p className="text-sm text-ink/80">
@@ -32,7 +33,7 @@ export default function ContactSheet() {
                   href={business.facebookUrl}
                   target="_blank"
                   rel="noopener"
-                  className="underline"
+                  className="inline-flex min-h-11 items-center underline"
                 >
                   Facebook
                 </a>

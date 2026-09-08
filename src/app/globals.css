@@ -217,6 +217,7 @@ details[open] > .rail-panel {
   }
 }
 
+
 /* Rail ticks must wrap inside their own column, never overflow it. */
 @media (min-width: 768px) {
   .rail-mark {
@@ -225,5 +226,60 @@ details[open] > .rail-panel {
   .rail-tick-label {
     display: block;
     overflow-wrap: break-word;
+  }
+}
+
+
+/* Project record media row: all three tiles always share one media
+   height, so their captions always share a baseline by construction, not
+   by manual nudging. Tablet (768-1439px) keeps the two-row grouping;
+   1440px and up is the addendum's single 5:4:3 row. */
+.record-media {
+  height: 420px;
+}
+@media (min-width: 768px) {
+  .record-media {
+    height: 400px;
+  }
+}
+@media (min-width: 1440px) {
+  .record-media {
+    height: 520px;
+  }
+  .record-tile-new-construction {
+    grid-column: span 5 / span 5;
+  }
+  .record-tile-barns {
+    grid-column: span 4 / span 4;
+  }
+  .record-tile-remodel {
+    grid-column: span 3 / span 3;
+  }
+}
+
+/* Project record shell: the section markup also carries Tailwind's own
+   `mx-auto max-w-6xl px-5 sm:px-8` (identical to every other section, so
+   the left edge lands on the shared alignment line below 1440px with no
+   custom code at all). This class supplies only the 1440px-and-up
+   override: a wider media track whose left edge is still pinned to the
+   same shared-line formula the hero already uses, with a smaller,
+   asymmetric right gutter so the Remodel tile clears its aspect-ratio
+   floor with real margin rather than sitting right at it.
+   It intentionally has no unguarded/base rule of its own -- only the
+   @media block below -- and stays unlayered (plain CSS, not a Tailwind
+   utility), so it always wins over the layered mx-auto/max-w-6xl/px-8
+   utilities once its media condition matches, regardless of source
+   order. (This project's build has been observed to silently drop an
+   unguarded rule that shares a selector with a later @media override
+   elsewhere in the file; giving the selector no unguarded rule at all
+   sidesteps that reliably.) */
+@media (min-width: 1440px) {
+  .project-record-shell {
+    max-width: none;
+    padding-left: max(var(--shell-pad), calc((100vw - var(--shell-max)) / 2 + var(--shell-pad)));
+    /* Deliberately smaller than shell-pad: the Remodel tile's aspect
+       ratio needs the extra width to clear the 0.55 floor with margin
+       rather than sitting right at it. */
+    padding-right: 1rem;
   }
 }

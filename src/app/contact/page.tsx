@@ -14,7 +14,7 @@ export default function ContactPage() {
       <PageIntro
         eyebrow="Contact"
         heading="Call, email, or write it out"
-        intro="Kevin answers his own phone. Call is fastest; email is a real second option."
+        intro="A call reaches Kevin directly. Call is fastest; email is a real second option."
         background="tan"
       />
       <ContactSheet />

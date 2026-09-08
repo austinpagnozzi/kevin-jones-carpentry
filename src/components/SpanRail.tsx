@@ -108,28 +108,47 @@ export default function SpanRail() {
 }
 
 function ServicePanel({ service }: { service: (typeof services)[number] }) {
+  // A panel with a photograph keeps the original 1.3fr/1fr text-plus-image
+  // split. A text-only panel (Garages, Sheds, Decks, Repairs, Remodel) uses
+  // the identical two-column split so it fills the same panel width, but
+  // its own second column holds the panel's real controls -- the service
+  // link and the call link, the two things this entry actually has --
+  // rather than reserving an empty media column for a photograph that
+  // does not exist. On mobile both columns collapse to one, so the
+  // controls simply sit under the text as before.
   return (
-    <div
-      className={`mx-auto grid max-w-4xl gap-6 md:items-start ${
-        service.photo ? "md:grid-cols-[1.3fr_1fr]" : "md:grid-cols-1"
-      }`}
-    >
-      <div className={service.photo ? "" : "max-w-2xl"}>
+    <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-[1.3fr_1fr] md:items-center">
+      <div>
         <h3 className="font-display text-xl">{service.label}</h3>
-        <p className="mt-2 text-ink/85">{service.detail}</p>
-        <div className="mt-4 flex flex-wrap items-center gap-4">
-          <Link
-            href={`/services/${service.slug}`}
-            className="inline-flex min-h-[44px] items-center rounded border border-ink/30 px-4 font-body font-medium hover:bg-ink/5"
-          >
-            More on {service.label.toLowerCase()}
-          </Link>
-          <PhoneLink className="inline-flex min-h-[44px] items-center rounded bg-graphite px-5 font-body font-semibold text-paper">
-            Call {business.phoneDisplay}
-          </PhoneLink>
-        </div>
+        <p className="mt-2 max-w-md text-ink/85">{service.detail}</p>
+        {!service.photo && (
+          <div className="mt-4 flex flex-wrap items-center gap-4 md:hidden">
+            <Link
+              href={`/services/${service.slug}`}
+              className="inline-flex min-h-[44px] items-center rounded border border-ink/30 px-4 font-body font-medium hover:bg-ink/5"
+            >
+              More on {service.label.toLowerCase()}
+            </Link>
+            <PhoneLink className="inline-flex min-h-[44px] items-center rounded bg-graphite px-5 font-body font-semibold text-paper">
+              Call {business.phoneDisplay}
+            </PhoneLink>
+          </div>
+        )}
+        {service.photo && (
+          <div className="mt-4 flex flex-wrap items-center gap-4">
+            <Link
+              href={`/services/${service.slug}`}
+              className="inline-flex min-h-[44px] items-center rounded border border-ink/30 px-4 font-body font-medium hover:bg-ink/5"
+            >
+              More on {service.label.toLowerCase()}
+            </Link>
+            <PhoneLink className="inline-flex min-h-[44px] items-center rounded bg-graphite px-5 font-body font-semibold text-paper">
+              Call {business.phoneDisplay}
+            </PhoneLink>
+          </div>
+        )}
       </div>
-      {service.photo && (
+      {service.photo ? (
         <figure>
           <div className="relative h-56 w-full overflow-hidden rounded sm:h-64">
             <Image
@@ -145,6 +164,18 @@ function ServicePanel({ service }: { service: (typeof services)[number] }) {
             {service.photo.caption}
           </figcaption>
         </figure>
+      ) : (
+        <div className="hidden flex-col items-start gap-4 border-tan-deep/50 md:flex md:border-l md:pl-8">
+          <Link
+            href={`/services/${service.slug}`}
+            className="inline-flex min-h-[44px] items-center rounded border border-ink/30 px-4 font-body font-medium hover:bg-ink/5"
+          >
+            More on {service.label.toLowerCase()}
+          </Link>
+          <PhoneLink className="inline-flex min-h-[44px] items-center rounded bg-graphite px-5 font-body font-semibold text-paper">
+            Call {business.phoneDisplay}
+          </PhoneLink>
+        </div>
       )}
     </div>
   );

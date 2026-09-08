@@ -23,12 +23,12 @@ export default function AboutPage() {
       <section className="bg-paper">
         <div className="mx-auto max-w-3xl px-5 py-12 sm:px-8 md:py-16">
           <p className="text-lg text-ink/85">
-            Kevin frames the rough end of a job, the foundation, the walls,
-            the trusses, and he also builds the finish end, the closets, the
-            wainscoting, the trim. Most of the carpentry on this site was
-            built by the same hands from start to finish, which is the whole
-            reason the site is organized as one span from Rough to Finish
-            instead of a list of separate specialties.
+            The work on this site runs from the rough end of a job, the
+            foundation, the walls, the trusses, to the finish end, the
+            closets, the wainscoting, the trim. That range across the whole
+            job, not just one part of it, is why the site is organized as one
+            span from Rough to Finish instead of a list of separate
+            specialties.
           </p>
           <p className="mt-5 text-lg text-ink/85">
             On his own page Kevin describes himself as{" "}

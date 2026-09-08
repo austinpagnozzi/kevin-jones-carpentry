@@ -201,7 +201,7 @@ export const projectRecord = {
 export const howKevinWorks = {
   heading: "How Kevin works",
   intro:
-    "Kevin answers his own phone and does his own estimating. There is no office and no sales call, just a conversation about the job.",
+    "A call reaches Kevin directly, and the conversation is about the job.",
   points: [
     "Call or email with what you are picturing, even if it is not fully worked out yet.",
     "Know roughly what kind of project it is: new construction, a barn, a garage, a shed, a deck, a remodel or a repair, or something that does not fit that list.",

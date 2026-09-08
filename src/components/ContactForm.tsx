@@ -103,7 +103,7 @@ export default function ContactForm() {
             autoComplete="name"
             aria-invalid={Boolean(errors.name)}
             aria-describedby={errors.name ? errorSummaryId : undefined}
-            className="w-full rounded border border-ink/30 bg-paper px-3 py-2 focus:border-ink"
+            className="min-h-11 w-full rounded border border-ink/30 bg-paper px-3 py-2 focus:border-ink"
           />
         </div>
 
@@ -117,7 +117,7 @@ export default function ContactForm() {
             defaultValue=""
             aria-invalid={Boolean(errors.project)}
             aria-describedby={errors.project ? errorSummaryId : undefined}
-            className="w-full rounded border border-ink/30 bg-paper px-3 py-2 focus:border-ink"
+            className="min-h-11 w-full rounded border border-ink/30 bg-paper px-3 py-2 focus:border-ink"
           >
             <option value="" disabled>
               Choose one
