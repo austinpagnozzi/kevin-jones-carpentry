@@ -14,7 +14,7 @@ export default function WorkPage() {
     <>
       <PageIntro
         eyebrow="Work"
-        heading="What Kevin has actually built"
+        heading="What Kevin Jones Carpentry has actually built"
         intro="A short, honest record. No stock photography and nothing staged, just jobs Kevin Jones Carpentry has done."
         background="tan"
       />

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | Kevin Jones Carpentry",
   },
   description:
-    "Kevin Jones Carpentry, Parkman, Maine. New construction, remodels, repairs, decks, barns, garages and sheds, one carpenter working rough frame to finished room.",
+    "Kevin Jones Carpentry, Parkman, Maine. New construction, remodels, repairs, decks, barns, garages and sheds, rough frame to finished room.",
   robots: {
     index: false,
     follow: false,

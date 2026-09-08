@@ -102,7 +102,7 @@ export const services: Service[] = [
     railTick: "Sheds",
     summary: "Storage sheds and small outbuildings, sized and built for what you actually need to keep dry.",
     detail:
-      "Sheds range from a simple lean-to to a framed structure with a real floor system and trim. Kevin builds them to hold up, not just to look good in a driveway for a season. Tell him what you are storing and roughly how much room you need.",
+      "Sheds range from a simple lean-to to a framed structure with a real floor system and trim. They are built to hold up, not just to look good in a driveway for a season. Tell him what you are storing and roughly how much room you need.",
     ctaPhrase: "Call about a shed you need built",
   },
   {
@@ -219,7 +219,7 @@ export const contactSheet = {
 };
 
 export const heroCopy = {
-  headline: "One carpenter. Rough frame to finished room.",
+  headline: "The whole job. Rough frame to finished room.",
   subline: "Kevin Jones Carpentry, based in Parkman, Maine.",
 };
 
