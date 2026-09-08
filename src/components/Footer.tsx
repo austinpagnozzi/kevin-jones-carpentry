@@ -22,7 +22,11 @@ export default function Footer() {
               Pages
             </h2>
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="rounded py-0.5 w-fit">
+              <Link
+                key={link.href}
+                href={link.href}
+                className="flex min-h-11 w-fit items-center rounded py-0.5 md:min-h-0"
+              >
                 {link.label}
               </Link>
             ))}
@@ -36,7 +40,7 @@ export default function Footer() {
               <Link
                 key={s.slug}
                 href={`/services/${s.slug}`}
-                className="rounded py-0.5 w-fit"
+                className="flex min-h-11 w-fit items-center rounded py-0.5 md:min-h-0"
               >
                 {s.label}
               </Link>
@@ -47,10 +51,10 @@ export default function Footer() {
             <h2 className="mb-1 font-body text-sm font-semibold text-ink/80">
               Contact
             </h2>
-            <PhoneLink className="rounded w-fit font-semibold tabular-nums">
+            <PhoneLink className="flex min-h-11 w-fit items-center rounded font-semibold tabular-nums md:min-h-0">
               {business.phoneDisplay}
             </PhoneLink>
-            <EmailLink className="rounded w-fit break-all" />
+            <EmailLink className="flex min-h-11 w-fit items-center rounded break-all md:min-h-0" />
             <p className="text-ink/80">
               {business.addressLine1}
               <br />
@@ -62,7 +66,7 @@ export default function Footer() {
                 href={business.facebookUrl}
                 target="_blank"
                 rel="noopener"
-                className="underline"
+                className="inline-block py-3 underline md:py-0"
               >
                 Facebook
               </a>

@@ -44,6 +44,10 @@ export interface Service {
   railTick: string;
   summary: string;
   detail: string;
+  /** Natural-English call-to-action phrase for this specific service, used
+   *  on its /services/[slug] page. Never a plural service name forced to
+   *  do adjective duty (e.g. never "a barns project" or "a sheds project"). */
+  ctaPhrase: string;
   photo?: ServicePhoto;
 }
 
@@ -57,6 +61,7 @@ export const services: Service[] = [
       "A new building from the footing up, framed and sheathed on ZIP System, trusses set and roof closed in.",
     detail:
       "This is ground-up work. Foundation and slab, walls framed and sheathed in ZIP System, trusses set (Kevin has run this by boom lift), and the building closed in and ready for the next trade. If you have a set of plans or even a rough sketch, that is enough to start the conversation.",
+    ctaPhrase: "Call about a new build",
     photo: {
       src: "/images/truss-setting-boom-lift.webp",
       alt: "A gable truss being lifted into place by boom lift over a partially sheathed new building on a poured foundation",
@@ -70,9 +75,10 @@ export const services: Service[] = [
     label: "Barns",
     railTick: "Barns",
     summary:
-      "Barns and outbuildings built for the work they do, from a run-in shelter to a full timber-framed barn.",
+      "Barns and outbuildings built for the work they do, like the rough-sawn run-in shelter below.",
     detail:
       "Barns get built for the animals and equipment using them, not for looks first. Kevin frames them rough-sawn where that is the right call, sets them on a proper footing, and roofs them to shed Maine weather for years.",
+    ctaPhrase: "Call about a barn you need built",
     photo: {
       src: "/images/run-in-shed-railcar.webp",
       alt: "A rough-sawn open-front shelter framed against the side of a maroon railcar, with a metal roof and exposed rafters",
@@ -88,6 +94,7 @@ export const services: Service[] = [
     summary: "Detached and attached garages, framed and finished to match the house or built to stand on their own.",
     detail:
       "A garage is structural work with a finish-carpentry ending: it has to frame square, close in tight, and end with doors, trim and siding that look like they belong. Call with your rough dimensions and what you want to store or park in it.",
+    ctaPhrase: "Call about a garage you need built",
   },
   {
     slug: "sheds",
@@ -96,6 +103,7 @@ export const services: Service[] = [
     summary: "Storage sheds and small outbuildings, sized and built for what you actually need to keep dry.",
     detail:
       "Sheds range from a simple lean-to to a framed structure with a real floor system and trim. Kevin builds them to hold up, not just to look good in a driveway for a season. Tell him what you are storing and roughly how much room you need.",
+    ctaPhrase: "Call about a shed you need built",
   },
   {
     slug: "decks",
@@ -104,6 +112,7 @@ export const services: Service[] = [
     summary: "Decks framed for the load they will actually carry, built onto the house or standing free.",
     detail:
       "A deck lives outside year round, so the framing underneath matters as much as the boards on top. Kevin frames to the ledger or on freestanding footings, whichever the site calls for, and finishes with the decking and railing you choose.",
+    ctaPhrase: "Call about a deck you need built",
   },
   {
     slug: "remodel",
@@ -112,6 +121,7 @@ export const services: Service[] = [
     summary: "Interior remodels and finish carpentry, down to the pine wainscoting and the closet shelving.",
     detail:
       "This is the finish end of the span: opening up a room, building in shelving and closets, running wainscoting and trim. The pine closet below was built in with diagonal wainscoting, a chair rail and a plank door on strap hinges. That level of detail is what a remodel gets.",
+    ctaPhrase: "Call about a remodel",
     photo: {
       src: "/images/interior-pine-closet.webp",
       alt: "A built-in pine closet with a plank door on strap hinges, open shelving inside, and diagonal pine wainscoting on the surrounding wall",
@@ -127,6 +137,7 @@ export const services: Service[] = [
     summary: "Repairs to framing, siding, decks, floors and trim, sized to the job and not padded into more work.",
     detail:
       "Not every call is a new build. Rot in a sill, a soft deck board, siding that took a hit over the winter: Kevin fixes what is actually broken. Describe what you are seeing and he can tell you what it will take to put right.",
+    ctaPhrase: "Call about a repair",
   },
 ];
 
@@ -139,15 +150,22 @@ export const plusMark = {
 export const projectRecord = {
   intro:
     "Four jobs, both ends of the span. All of it genuine Kevin Jones Carpentry work, nothing staged for a photograph.",
+  // One photograph row at a single fixed media height (the layout sets the
+  // height; no tile sizes itself from its source image), widths 5:4:3 in
+  // build order, then the crossing bridge as a full-width ruled entry
+  // outside that row, sized to its own content instead of stretching to
+  // match a photograph.
   entries: [
     {
       kind: "photo" as const,
       src: "/images/framing-walls-zip-sheathing.webp",
-      alt: "Framed and partially sheathed exterior walls on a poured foundation and slab, ZIP System panels up, temporary braces holding the frame, dusk sky behind",
+      alt: "Framed and partially sheathed exterior walls on a poured foundation and slab, ZIP System panels up, temporary braces holding the frame",
       caption: "Walls framed and sheathed in ZIP System, on a poured foundation and slab.",
       width: 1301,
       height: 1734,
+      objectPosition: "50% 78%",
       label: "New Construction",
+      widthShare: 5,
     },
     {
       kind: "photo" as const,
@@ -156,7 +174,9 @@ export const projectRecord = {
       caption: "A rough-sawn run-in shelter, framed against a railcar, on a concrete footing.",
       width: 1500,
       height: 2000,
+      objectPosition: "50% 55%",
       label: "Barns",
+      widthShare: 4,
     },
     {
       kind: "photo" as const,
@@ -165,13 +185,15 @@ export const projectRecord = {
       caption: "Built-in pine closet with diagonal wainscoting, a chair rail and LVP flooring.",
       width: 1200,
       height: 1600,
+      objectPosition: "50% 50%",
       label: "Remodel",
+      widthShare: 3,
     },
     {
       kind: "text" as const,
       title: "Custom crossing bridge",
-      caption:
-        "A pressure-treated footbridge with railings, built to cross a stream. No photograph of this one is available yet, but it is real completed work.",
+      body: "A pressure-treated footbridge with railings, built to cross a stream.",
+      note: "No photograph of this one is available yet, but it is real completed work.",
     },
   ],
 };
@@ -182,7 +204,7 @@ export const howKevinWorks = {
     "Kevin answers his own phone and does his own estimating. There is no office and no sales call, just a conversation about the job.",
   points: [
     "Call or email with what you are picturing, even if it is not fully worked out yet.",
-    "Know roughly what kind of project it is: one of the seven above, or something that does not fit the list.",
+    "Know roughly what kind of project it is: new construction, a barn, a garage, a shed, a deck, a remodel or a repair, or something that does not fit that list.",
     "If you have rough dimensions, a sketch, plans, or photos of the site, bring them. If you do not, that is fine too.",
     "Kevin will tell you plainly whether it is something he takes on and what he needs to see next.",
   ],

@@ -55,19 +55,20 @@ export default async function ServiceDetailPage({
             <p className="max-w-md text-lg text-ink/85">{service.detail}</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <PhoneLink className="inline-flex min-h-[44px] items-center gap-2 rounded bg-graphite px-5 font-body font-semibold text-paper hover:bg-graphite-deep">
-                Call about a {service.label.toLowerCase()} project
+                {service.ctaPhrase}
               </PhoneLink>
             </div>
             <p className="mt-6 text-sm text-ink/80">
               Kevin also takes on{" "}
               {otherServices.map((s, i) => (
                 <span key={s.slug}>
+                  {i > 0 && (i === otherServices.length - 1 ? " and " : ", ")}
                   <Link href={`/services/${s.slug}`} className="underline">
                     {s.label.toLowerCase()}
                   </Link>
-                  {i < otherServices.length - 1 ? ", " : "."}
                 </span>
               ))}
+              .
             </p>
           </div>
 

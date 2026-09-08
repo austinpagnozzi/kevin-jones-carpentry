@@ -29,12 +29,13 @@ export default function SpanRail() {
           </span>
         </div>
 
-        <div className="relative md:flex md:items-start md:gap-1 md:pb-2">
+        <div className="rail-row relative md:flex md:items-start md:gap-1 md:pb-2">
           {services.map((service, i) => (
             <details
               key={service.slug}
               name="span-rail"
               open={i === 0}
+              data-photo={service.photo ? "true" : "false"}
               className="rail-mark border-b border-ink/20 last:border-b-0 md:flex-1 md:border-none"
             >
               <summary className="rail-tick relative flex cursor-pointer list-none items-center gap-3 py-3 font-body text-[0.95rem] font-medium outline-none md:flex-col md:items-stretch md:gap-2 md:py-0 md:text-center md:text-sm">
@@ -63,6 +64,7 @@ export default function SpanRail() {
 
           <details
             name="span-rail"
+            data-photo="false"
             className="rail-mark border-b border-ink/20 last:border-b-0 md:w-16 md:flex-none md:border-none"
           >
             <summary className="rail-tick relative flex cursor-pointer list-none items-center gap-3 py-3 font-body text-[0.95rem] font-medium outline-none md:flex-col md:items-stretch md:gap-2 md:py-0 md:text-center md:text-sm">
@@ -91,8 +93,10 @@ export default function SpanRail() {
         </div>
 
         {/* Reserves room on desktop for the shared, absolutely positioned
-            panel so it never overlaps the sentence below. */}
-        <div aria-hidden="true" className="hidden md:block md:h-[23rem]" />
+            panel so it never overlaps the sentence below. Sized to
+            whichever panel is actually open via the rail-reserve rules,
+            not to a single fixed height for every panel. */}
+        <div aria-hidden="true" className="rail-reserve hidden md:block" />
 
         <p className="mt-6 max-w-2xl text-sm text-ink/80">
           {allServiceNamesSentence} Shed work he lists as &ldquo;Shed +++&rdquo;
